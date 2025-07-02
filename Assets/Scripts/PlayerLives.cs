@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class PlayerLives : MonoBehaviour
 {
@@ -23,34 +24,9 @@ public class PlayerLives : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Enemy"))
         {
-            Destroy(other.gameObject);
-            Debug.Log("hiting");
-            score += 1;
-            livesScore -= 1;
-            pickUpSound.pitch = pickUpSound.pitch + pitchIncrease;
-            pickUpSound.Play();
-
-            if (score >= 10)
-            {
-                panel.SetActive(true);
-            }
-
-
-            if (livesScore > 0 && livesScore <= livesImages.Length)
-            {
-                Spawner();
-                livesImages[livesScore-1].SetActive(false);
-
-            }
-            else
-            {
-
-                Debug.Log("No more lives left");
-                GameOver();
-
-            }
+            StartCoroutine(Death());
         }
 
     }
@@ -71,10 +47,8 @@ public class PlayerLives : MonoBehaviour
 
         if (livesScore > 0 && livesScore <= player.Length)
         {
-
-            GameObject newPlayer = Instantiate(player[livesScore-1], SpawnPoint.position, Quaternion.identity);
-
-            //livesText.text = "Spheres: " + livesScore;
+            Debug.Log("Spawning new player...");
+            GameObject newPlayer = Instantiate(player[livesScore - 1], SpawnPoint.position, Quaternion.identity);
         }
         else
         {
@@ -82,12 +56,48 @@ public class PlayerLives : MonoBehaviour
         }
 
     }
-    
+
     void GameOver()
     {
         //GameOverPanel.SetActive(true);
         Time.timeScale = 0f;
         Destroy(GameObject.FindGameObjectWithTag("Player"));
+    }
+
+    private IEnumerator Death()
+    {
+        
+            Debug.Log("hiting");
+            score += 1;
+            livesScore -= 1;
+
+            if (score >= 10)
+            {
+                panel.SetActive(true);
+            }
+
+            yield return new WaitForSeconds(0.5f);
+
+
+            if (livesScore > 0 && livesScore <= livesImages.Length)
+            {
+                Spawner();
+                livesImages[livesScore - 1].SetActive(false);
+
+            }
+            else
+            {
+
+                Debug.Log("No more lives left");
+                GameOver();
+
+            }
+
+            Destroy(gameObject);
+            pickUpSound.pitch = pickUpSound.pitch + pitchIncrease;
+            pickUpSound.Play();
+        
+
     }
 
 
