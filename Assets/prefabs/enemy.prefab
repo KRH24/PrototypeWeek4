@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95cfd2eb8ebfeb428f0decc561425b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 6256393160110196606, guid: 9de0a4570cce2f14f929d00aa20a8ea6, type: 3}
   speed: 5
 --- !u!114 &3895932200810646384
 MonoBehaviour:
@@ -159,19 +159,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7462479729869018412}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e14deb9f15b4c444da4729303bac9497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   livesScore: 5
   score: 0
-  player:
-  - {fileID: 3746684556237781217, guid: 866259fc35acba640b695e5b70d9af96, type: 3}
-  - {fileID: 3746684556237781217, guid: 866259fc35acba640b695e5b70d9af96, type: 3}
-  - {fileID: 3746684556237781217, guid: 866259fc35acba640b695e5b70d9af96, type: 3}
-  - {fileID: 3746684556237781217, guid: 866259fc35acba640b695e5b70d9af96, type: 3}
-  - {fileID: 3746684556237781217, guid: 866259fc35acba640b695e5b70d9af96, type: 3}
+  player: {fileID: 0}
   SpawnPoint: {fileID: 0}
   livesImages:
   - {fileID: 0}

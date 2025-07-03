@@ -6,7 +6,7 @@ public class PlayerLives : MonoBehaviour
 {
     public int livesScore = 5;
     public int score = 0;
-    public GameObject[] player;
+    public GameObject player;
     public Transform SpawnPoint;
     public GameObject[] livesImages;
     //public TextMeshProUGUI scoreText;
@@ -45,10 +45,10 @@ public class PlayerLives : MonoBehaviour
             return;
         }
 
-        if (livesScore > 0 && livesScore <= player.Length)
+        if (livesScore > 0 )
         {
             Debug.Log("Spawning new player...");
-            GameObject newPlayer = Instantiate(player[livesScore - 1], SpawnPoint.position, Quaternion.identity);
+            GameObject newPlayer = Instantiate(player, SpawnPoint.position, Quaternion.identity);
         }
         else
         {
@@ -61,7 +61,7 @@ public class PlayerLives : MonoBehaviour
     {
         //GameOverPanel.SetActive(true);
         Time.timeScale = 0f;
-        Destroy(GameObject.FindGameObjectWithTag("Player"));
+        //Destroy(GameObject.FindGameObjectWithTag("Player"));
     }
 
     private IEnumerator Death()

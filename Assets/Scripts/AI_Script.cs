@@ -13,10 +13,26 @@ public class AI_Script : MonoBehaviour
 
         rb.interpolation = RigidbodyInterpolation.Interpolate;
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+
+         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj != null)
+            {
+                player = playerObj.transform;
+            }
+    
     }
 
     void FixedUpdate() // Use FixedUpdate for physics
     {
+        if (player == null)
+        {
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj != null)
+            {
+                player = playerObj.transform;
+            }
+        
+        }
         if (player != null)
         {
             Vector3 direction = (player.position - transform.position).normalized;
@@ -26,7 +42,7 @@ public class AI_Script : MonoBehaviour
             rb.MovePosition(newPosition);
 
 
-            // rb.AddForce(direction * speed, ForceMode.Acceleration);
+
         }
     }
 
